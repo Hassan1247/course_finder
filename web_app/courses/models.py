@@ -20,8 +20,10 @@ class Course(models.Model):
     number_of_comments = models.PositiveIntegerField(default=0)
     number_of_views = models.PositiveIntegerField(default=0)
     media_url = models.URLField(blank=True, null=True)
-    medium = models.CharField(max_length=100)
-    excersice = models.BooleanField(default=False)
+    have_book = models.BooleanField(default=False)
+    have_site = models.BooleanField(default=False)
+    have_video = models.BooleanField(default=False)
+    have_excersice = models.BooleanField(default=False)
     tags = models.ManyToManyField(Tag, blank=True)
     submitter = models.ForeignKey(User, on_delete=models.CASCADE)
     
