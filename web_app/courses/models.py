@@ -5,7 +5,7 @@ class Tag(models.Model):
     name = models.CharField(max_length=100)
     
     def __str__(self):
-        return self.name
+        return str(self.name)
 
 class Course(models.Model):
     name = models.TextField()
@@ -13,6 +13,8 @@ class Course(models.Model):
     free_or_paid = models.CharField(choices=TYPES, max_length=1, blank=True)
     rate = models.IntegerField(default=0)
     text = models.TextField(blank=True)
+    submit_date = models.DateTimeField()
+    last_visit_date = models.DateTimeField()
     instructor_rate = models.IntegerField(default=0)
     pace_rate = models.IntegerField(default=0)
     depth_coverage_rate = models.IntegerField(default=0)
@@ -33,5 +35,5 @@ class Comment(models.Model):
     parent = models.ForeignKey("Comment", on_delete=models.CASCADE, blank=True, null=True)
     rate = models.IntegerField(default=0)
     text = models.TextField()
+    submit_date = models.DateTimeField()
     submitter = models.ForeignKey(User, on_delete=models.CASCADE)
-
